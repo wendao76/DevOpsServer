@@ -1,0 +1,12 @@
+redis:
+  addr: "redis:6379"
+  db: 1,
+  password: ""
+database:
+  type: "mysql"
+  host: "localhost"
+  dbname: "testdb"
+  username: "root"
+  password: "root"
+  port: "3306"
+  charset: "utf8mb4"
