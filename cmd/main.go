@@ -8,6 +8,8 @@ import (
 	"log"
 )
 
+//@title 接口文档
+//@version 0.0.1
 func main() {
 	StartServer()
 }

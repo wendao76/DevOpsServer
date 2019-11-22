@@ -20,6 +20,11 @@ func (us * UserService) Get(c *gin.Context) {
 	fmt.Println("GET")
 }
 
+//@Summary 新增用户
+//@Description 新增一个用户
+//@Accept json
+//@Produce json
+//@Router /users
 func (us * UserService) Add(c *gin.Context) {
 	user := &model.User {
 	    Username: "test",
