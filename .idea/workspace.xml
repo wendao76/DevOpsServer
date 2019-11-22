@@ -2,18 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="461fee3b-acaa-436c-a17d-021d222bf2fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/config.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/main.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/common/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/common/config/Config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/common/dao/dao.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/user/.gitkeep" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/user/model/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/user/service/user_service.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/go_web.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/go_web.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/user.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/common/config/Config.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/common/config/Config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/common/dao/dao.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/common/dao/dao.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/user/model/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/user/model/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/user/service/user_service.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/user/service/user_service.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,31 +24,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/go.mod">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="154">
-                <caret line="7" selection-start-line="7" selection-end-line="7" />
-              </first_editor>
-              <second_editor />
+            <state relative-caret-position="264">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cmd/main.go">
+        <entry file="file://$PROJECT_DIR$/internal/user/service/user_service.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-43">
-              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state relative-caret-position="199">
+              <caret line="40" column="68" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
               <folding>
-                <element signature="e#14#31#0" expanded="true" />
+                <element signature="e#17#62#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/GoEnv/pkg/mod/github.com/go-redis/redis@v6.15.6+incompatible/commands.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="831" column="17" lean-forward="true" selection-start-line="831" selection-start-column="17" selection-end-line="831" selection-end-column="17" />
+              <folding>
+                <element signature="e#15#88#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -59,45 +57,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/internal/common/dao/dao.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+            <state relative-caret-position="814">
+              <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
               <folding>
-                <element signature="e#13#56#0" expanded="true" />
+                <element signature="e#13#171#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://D:/GoEnv/pkg/mod/github.com/go-redis/redis@v6.15.6+incompatible/redis.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="162" column="21" selection-start-line="162" selection-start-column="21" selection-end-line="162" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/go.sum">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://D:/GoEnv/pkg/mod/github.com/jinzhu/gorm@v1.9.11/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/internal/user/service/user_service.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            <state relative-caret-position="1295">
+              <caret line="59" column="20" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="20" />
               <folding>
-                <element signature="e#17#45#0" expanded="true" />
+                <element signature="e#14#106#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,8 +81,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cmd/config.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+            <state relative-caret-position="264">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/user.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="12" column="54" lean-forward="true" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/internal/user/model/user.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cmd/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/internal/common/config/Config.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
+              <folding>
+                <element signature="e#16#52#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -124,7 +138,12 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>init</find>
+      <find>数据库连接失败</find>
+      <find />
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
   </component>
   <component name="GOROOT" path="D:\Go" />
   <component name="Git.Settings">
@@ -138,13 +157,14 @@
       <list>
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/internal/user/service/user.go" />
-        <option value="$PROJECT_DIR$/internal/user/model/user.go" />
-        <option value="$PROJECT_DIR$/internal/user/service/user_service.go" />
-        <option value="$PROJECT_DIR$/cmd/main.go" />
-        <option value="$PROJECT_DIR$/cmd/config.yml" />
         <option value="$PROJECT_DIR$/go.mod" />
-        <option value="$PROJECT_DIR$/internal/common/config/Config.go" />
+        <option value="$PROJECT_DIR$/cmd/main.go" />
         <option value="$PROJECT_DIR$/internal/common/dao/dao.go" />
+        <option value="$PROJECT_DIR$/internal/common/config/Config.go" />
+        <option value="$PROJECT_DIR$/internal/user/model/user.go" />
+        <option value="$PROJECT_DIR$/db/user.sql" />
+        <option value="$PROJECT_DIR$/cmd/config.yml" />
+        <option value="$PROJECT_DIR$/internal/user/service/user_service.go" />
       </list>
     </option>
   </component>
@@ -175,11 +195,74 @@
             <path>
               <item name="go_web" type="b2602c69:ProjectViewProjectNode" />
               <item name="go_web" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="go_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="go_web" type="462c0819:PsiDirectoryNode" />
               <item name="internal" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="go_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="go_web" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="go_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="go_web" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="go_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="go_web" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="go_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="go_web" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="go_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="go_web" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="go_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="go_web" type="462c0819:PsiDirectoryNode" />
+              <item name="internal" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="go_web" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="go_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go SDK 1.13.1" type="20ee2d1f:SyntheticLibraryElementNode" />
+            </path>
+            <path>
+              <item name="go_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go SDK 1.13.1" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="go_web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Go SDK 1.13.1" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="errors" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -236,12 +319,12 @@
       <option name="presentableId" value="Default" />
       <updated>1574389920910</updated>
       <workItem from="1574389922239" duration="1101000" />
-      <workItem from="1574391036784" duration="6945000" />
+      <workItem from="1574391036784" duration="11890000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8046000" />
+    <option name="totallyTimeSpent" value="12991000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1974" y="-8" width="1874" height="1096" extended-state="6" />
@@ -304,47 +387,13 @@
     <entry file="file://$PROJECT_DIR$/internal/common/.gitkeep">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/internal/user/model/user.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding>
-            <element signature="e#17#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/go.sum">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/internal/user/service/user_service.go">
+    <entry file="file://D:/GoEnv/pkg/mod/github.com/go-redis/redis@v6.15.6+incompatible/redis.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#17#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/GoEnv/pkg/mod/github.com/jinzhu/gorm@v1.9.11/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmd/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/GoEnv/pkg/mod/github.com/go-redis/redis@v6.15.6+incompatible/commands.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="340" column="18" selection-start-line="340" selection-start-column="18" selection-end-line="340" selection-end-column="18" />
-          <folding>
-            <element signature="e#15#88#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="199">
+          <caret line="162" column="21" selection-start-line="162" selection-start-column="21" selection-end-line="162" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -360,47 +409,99 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/go.mod">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+        <state relative-caret-position="264">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/go.sum">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://D:/GoEnv/pkg/mod/github.com/go-redis/redis@v6.15.6+incompatible/redis.go">
+    <entry file="file://D:/GoEnv/pkg/mod/github.com/gin-gonic/gin@v1.4.0/routergroup.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="199">
-          <caret line="162" column="21" selection-start-line="162" selection-start-column="21" selection-end-line="162" selection-end-column="21" />
+          <caret line="96" column="26" selection-start-line="96" selection-start-column="26" selection-end-line="96" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/GoEnv/pkg/mod/github.com/jinzhu/gorm@v1.9.11/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1295">
+          <caret line="59" column="20" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="20" />
+          <folding>
+            <element signature="e#14#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Go/src/log/log.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="316" column="5" selection-start-line="316" selection-start-column="5" selection-end-line="316" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/internal/common/config/Config.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="81" column="19" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
+        <state relative-caret-position="374">
+          <caret line="45" column="43" selection-start-line="45" selection-start-column="43" selection-end-line="45" selection-end-column="43" />
           <folding>
             <element signature="e#16#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/cmd/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/internal/common/dao/dao.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        <state relative-caret-position="814">
+          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
           <folding>
-            <element signature="e#13#56#0" expanded="true" />
+            <element signature="e#13#171#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cmd/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-43">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        <state relative-caret-position="330">
+          <caret line="21" column="26" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/user.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="54" lean-forward="true" selection-start-line="12" selection-start-column="54" selection-end-line="12" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/internal/user/model/user.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/GoEnv/pkg/mod/github.com/go-redis/redis@v6.15.6+incompatible/commands.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="831" column="17" lean-forward="true" selection-start-line="831" selection-start-column="17" selection-end-line="831" selection-end-column="17" />
           <folding>
-            <element signature="e#14#31#0" expanded="true" />
+            <element signature="e#15#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/internal/user/service/user_service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="40" column="68" selection-start-line="40" selection-start-column="68" selection-end-line="40" selection-end-column="68" />
+          <folding>
+            <element signature="e#17#62#0" expanded="true" />
           </folding>
         </state>
       </provider>

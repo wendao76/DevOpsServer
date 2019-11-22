@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"go_web/internal/common/config"
+	"go_web/internal/common/dao"
 	"go_web/internal/user/service"
 	"log"
 )
@@ -13,17 +14,24 @@ func main() {
 
 //用户服务
 func StartServer(){
-	gin.SetMode(gin.ReleaseMode)
+	//gin.SetMode(gin.ReleaseMode)
 	engine := gin.New()
 	engine.Use(gin.Logger(), gin.Recovery())
 	initRouter(engine)
-	err := engine.Run(":8081")
+	err := config.InitDefault()
+	conf, err := config.Default()
+	if err != nil {
+		log.Fatal(err.Error())
+		return
+	}
+	err = dao.Init(conf)
+	if err != nil {
+		log.Fatal(err.Error())
+		return
+	}
+	err = engine.Run(":8080")
 	if err != nil {
 		log.Fatal("用户服务启动失败!")
-	}
-	err = config.InitDefault()
-	if err != nil {
-		log.Fatal("配置初始化失败")
 	}
 }
 

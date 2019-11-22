@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"github.com/spf13/viper"
 )
 
@@ -34,7 +35,7 @@ func Default() (conf *Config, err error) {
 	v.SetConfigName(confFile)
 	err = v.ReadInConfig()
 	if err != nil {
-		return
+		return nil, err
 	}
 	var (
 		dbConfig    *DbConfig
@@ -42,6 +43,8 @@ func Default() (conf *Config, err error) {
 	)
 	v.Sub("database").Unmarshal(&dbConfig)
 	v.Sub("redis").Unmarshal(&redisConfig)
+	fmt.Println("fmt.Println(redisConfig)")
+	fmt.Println(redisConfig)
 	conf = &Config{
 		Db:    dbConfig,
 		Redis: redisConfig,
@@ -68,7 +71,7 @@ type Config struct {
 type DbConfig struct {
 	Host     string
 	DbName   string
-	DbType   string
+	Type   string
 	Username string
 	Password string
 	Port     int
