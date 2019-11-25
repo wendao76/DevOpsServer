@@ -10,8 +10,8 @@ import (
 
 //@title 接口文档
 //@version 0.0.1
-//@tag.name web框架名称
-//@tag.description web框架描述
+//@tag.name GO语言搭建的web脚手架
+//@tag.description 快速搭建环境
 func main() {
 	StartServer()
 }

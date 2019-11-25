@@ -24,7 +24,7 @@ func (us * UserService) Get(c *gin.Context) {
 //@Description 新增一个用户
 //@Accept json
 //@Produce json
-//@Router /users
+//@Router /users [get]
 func (us * UserService) Add(c *gin.Context) {
 	user := &model.User {
 	    Username: "test",
