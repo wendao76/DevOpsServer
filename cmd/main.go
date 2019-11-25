@@ -4,12 +4,14 @@ import (
 	"github.com/gin-gonic/gin"
 	"go_web/internal/common/config"
 	"go_web/internal/common/dao"
-	"go_web/internal/user/service"
+	"go_web/internal/user/controller"
 	"log"
 )
 
 //@title 接口文档
 //@version 0.0.1
+//@tag.name web框架名称
+//@tag.description web框架描述
 func main() {
 	StartServer()
 }
@@ -43,7 +45,7 @@ func initRouter(engine *gin.Engine) {
 			"message": "pong",
 		})
 	})
-	userService := service.NewUser()
+	userService := controller.NewUser()
 	userGroup := engine.Group("/users")
 	{
 		userGroup.POST("", userService.Add)
