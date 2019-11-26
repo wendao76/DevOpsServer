@@ -3,16 +3,29 @@ package config
 import (
 	"fmt"
 	"github.com/spf13/viper"
+	"log"
 )
 
 var (
 	confPath = "."
 	confFile = "config"
-	Conf     *Config
+	conf     *Config
 )
 
-func InitDefault() (err error) {
-	Conf, err = Default()
+func init() {
+	err := initDefault()
+	if err != nil {
+	    log.Fatal(err.Error())
+	}
+}
+
+
+func Get()  *Config {
+	return conf
+}
+
+func initDefault() (err error) {
+	conf, err = Default()
 	if err != nil {
 		panic(err)
 	}
@@ -22,7 +35,7 @@ func InitDefault() (err error) {
 func Init(path string, name string)  (err error) {
 	confPath = path
 	confFile = name
-	Conf, err = Default()
+	conf, err = Default()
 	if err != nil {
 		panic(err)
 	}
@@ -56,9 +69,8 @@ func New(configPath, configFile string) (conf *Config, err error) {
 	confPath, confFile = configPath, configFile
 	conf, err = Default()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
-	Conf = conf
 	return
 }
 

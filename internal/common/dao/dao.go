@@ -2,26 +2,37 @@ package dao
 
 import (
 	"fmt"
-	"errors"
 	"github.com/go-redis/redis"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"go_web/internal/common/config"
+	"log"
 )
 
 var dao *Dao
+
+func init() {
+	err := initDefault()
+	if err != nil {
+	    log.Fatal(err.Error())
+	}
+}
 
 type Dao struct {
 	Db *gorm.DB
 	Redis *redis.Client
 }
 
-func Get() (*Dao, error) {
-	if dao!= nil {
-		return dao, nil
-	} else {
-		return nil, errors.New("dao初始化失败")
+func Get() *Dao {
+	return dao
+}
+
+func initDefault() error{
+	err := Init(config.Get())
+	if err != nil {
+		return err
 	}
+	return nil
 }
 
 func Init(conf *config.Config)(err error) {
@@ -30,13 +41,13 @@ func Init(conf *config.Config)(err error) {
 	if err != nil {
 		return err
 	}
-	redis, err := initRedis(conf.Redis)
+	redisClient, err := initRedis(conf.Redis)
 	if err != nil {
 		return err
 	}
 	dao = &Dao{
 		Db: db,
-		Redis: redis,
+		Redis: redisClient,
 	}
 	fmt.Println("dao初始化成功")
 	return nil

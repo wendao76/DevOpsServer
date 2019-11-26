@@ -2,9 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"go_web/internal/common/config"
-	"go_web/internal/common/dao"
-	"go_web/internal/user/controller"
+	"go_web/internal/user/http"
 	"log"
 )
 
@@ -22,18 +20,7 @@ func StartServer(){
 	engine := gin.New()
 	engine.Use(gin.Logger(), gin.Recovery())
 	initRouter(engine)
-	err := config.InitDefault()
-	conf, err := config.Default()
-	if err != nil {
-		log.Fatal(err.Error())
-		return
-	}
-	err = dao.Init(conf)
-	if err != nil {
-		log.Fatal(err.Error())
-		return
-	}
-	err = engine.Run(":8080")
+	err := engine.Run(":8080")
 	if err != nil {
 		log.Fatal("用户服务启动失败!")
 	}
@@ -45,7 +32,7 @@ func initRouter(engine *gin.Engine) {
 			"message": "pong",
 		})
 	})
-	userService := controller.NewUser()
+	userService := http.NewUser()
 	userGroup := engine.Group("/users")
 	{
 		userGroup.POST("", userService.Add)

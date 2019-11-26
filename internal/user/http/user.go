@@ -1,11 +1,10 @@
-package controller
+package http
 
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"go_web/internal/common/dao"
 	"go_web/internal/user/model"
-	"log"
 	"time"
 )
 
@@ -34,16 +33,12 @@ func (us * UserController) Add(ctx *gin.Context) {
 	    Phone: "13255055666",
 	}
 
-	dao, err := dao.Get()
-	if err != nil {
-		log.Fatal("dao获取失败")
-	}
-	db := dao.Db
-	db.Create(user)
+	daoIns := dao.Get()
 
-	redisClient := dao.Redis
+	daoIns.Db.Create(user)
+	redisClient := daoIns.Redis
 
-	err = redisClient.Set("test-key", "fasdfasdf", 300 * time.Second).Err()
+	err := redisClient.Set("test-key", "fasdfasdf", 300 * time.Second).Err()
 	if err != nil {
 		fmt.Println(err.Error())
 	}
