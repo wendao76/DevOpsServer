@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"go_web/internal/common/middleware"
 	"go_web/internal/user/http"
 	"log"
 )
@@ -35,7 +36,7 @@ func initRouter(engine *gin.Engine) {
 	userService := http.NewUser()
 	userGroup := engine.Group("/users")
 	{
-		userGroup.POST("", userService.Add)
+		userGroup.POST("", middleware.Auth(),  userService.Add)
 		userGroup.GET("", userService.List)
 		userGroup.GET("/:userId", userService.Get)
 		userGroup.DELETE("/:userId", userService.Remove)

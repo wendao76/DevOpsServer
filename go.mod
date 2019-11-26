@@ -16,6 +16,8 @@ require (
 	github.com/mailru/easyjson v0.7.0 // indirect
 	github.com/mattn/go-isatty v0.0.10 // indirect
 	github.com/spf13/viper v1.5.0
+	github.com/swaggo/files v0.0.0-20190704085106-630677cd5c14
+	github.com/swaggo/gin-swagger v1.2.0
 	github.com/swaggo/swag v1.6.3
 	github.com/ugorji/go v1.1.7 // indirect
 	github.com/urfave/cli v1.22.2 // indirect

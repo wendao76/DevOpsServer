@@ -38,7 +38,7 @@ func (us * UserController) Add(ctx *gin.Context) {
 	daoIns.Db.Create(user)
 	redisClient := daoIns.Redis
 
-	err := redisClient.Set("test-key", "fasdfasdf", 300 * time.Second).Err()
+	err := redisClient.Set("test-redis-key", "fasdfasdf", 300 * time.Second).Err()
 	if err != nil {
 		fmt.Println(err.Error())
 	}
