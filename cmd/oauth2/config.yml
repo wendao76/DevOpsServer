@@ -1,0 +1,12 @@
+redis:
+  addr: "192.168.137.5:6379"
+  db: 1
+  password: ""
+database:
+  type: "mysql"
+  host: "192.168.137.5"
+  dbname: "testdb"
+  username: "root"
+  password: "root"
+  port: "3306"
+  charset: "utf8mb4"

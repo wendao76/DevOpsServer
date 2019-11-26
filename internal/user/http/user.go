@@ -9,14 +9,14 @@ import (
 	"time"
 )
 
-type UserService struct {
+type UserController struct {
 
 }
-func NewUser() *UserService{
-	return & UserService {}
+func NewUser() *UserController{
+	return & UserController {}
 }
 
-func (us * UserService) Get(c *gin.Context) {
+func (us * UserController) Get(ctx *gin.Context) {
 	fmt.Println("GET")
 }
 
@@ -25,7 +25,7 @@ func (us * UserService) Get(c *gin.Context) {
 //@Accept json
 //@Produce json
 //@Router /users [get]
-func (us * UserService) Add(c *gin.Context) {
+func (us * UserController) Add(ctx *gin.Context) {
 	user := &model.User {
 	    Username: "test",
 	    Password : "test",
@@ -50,10 +50,10 @@ func (us * UserService) Add(c *gin.Context) {
 	fmt.Println("Add")
 }
 
-func (us * UserService) Remove(c *gin.Context) {
+func (us * UserController) Remove(ctx *gin.Context) {
 	fmt.Println("Remove")
 }
 
-func (us * UserService) List(c *gin.Context) {
+func (us * UserController) List(c *gin.Context) {
 	fmt.Println("List")
 }
