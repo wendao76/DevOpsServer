@@ -28,7 +28,7 @@ func Get() *Dao {
 }
 
 func initDefault() error{
-	err := Init(config.Get())
+	err := Init(config.GetInstance())
 	if err != nil {
 		return err
 	}

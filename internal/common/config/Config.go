@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"github.com/spf13/viper"
 	"log"
 )
@@ -20,7 +19,7 @@ func init() {
 }
 
 
-func Get()  *Config {
+func GetInstance()  *Config {
 	return conf
 }
 
@@ -54,10 +53,14 @@ func Default() (conf *Config, err error) {
 		dbConfig    *DbConfig
 		redisConfig *RedisConfig
 	)
-	v.Sub("database").Unmarshal(&dbConfig)
-	v.Sub("redis").Unmarshal(&redisConfig)
-	fmt.Println("fmt.Println(redisConfig)")
-	fmt.Println(redisConfig)
+	err = v.Sub("database").Unmarshal(&dbConfig)
+	if err != nil {
+	    return nil, err
+	}
+	err = v.Sub("redis").Unmarshal(&redisConfig)
+	if err != nil {
+	    return nil, err
+	}
 	conf = &Config{
 		Db:    dbConfig,
 		Redis: redisConfig,

@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+    "go_web/internal/oauth2/http"
+)
 
 func main() {
-    fmt.Println("这个将来用于oauth2服务")
+    http.New()
 }
