@@ -43,6 +43,7 @@ func (us * UserController) Add(ctx *gin.Context) {
 		fmt.Println(err.Error())
 	}
 	fmt.Println("Add")
+	result(ctx, nil, OK)
 }
 
 func (us * UserController) Remove(ctx *gin.Context) {
