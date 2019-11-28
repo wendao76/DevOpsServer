@@ -36,3 +36,7 @@ func result(c *gin.Context, data interface{}, code int) {
 		Data: data,
 	})
 }
+
+func html(c *gin.Context, code int, filename string) {
+	c.HTML(code, filename, nil)
+}
