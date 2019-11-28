@@ -24,12 +24,13 @@ func initRouter(engine *gin.Engine) {
 			"message": "pong",
 		})
 	})
-	userServer := NewUser()
+	userAction := NewUser()
 	userGroup := engine.Group("/users")
 	{
-		userGroup.POST("", middleware.Auth(),  userServer.Add)
-		userGroup.GET("", userServer.List)
-		userGroup.GET("/:userId", userServer.Get)
-		userGroup.DELETE("/:userId", userServer.Remove)
+		userGroup.POST("", middleware.Auth(),  userAction.Create)
+		userGroup.PUT("", middleware.Auth(), userAction.Modify)
+		userGroup.GET("", userAction.List)
+		userGroup.GET("/:id", middleware.Auth(), userAction.Get)
+		userGroup.DELETE("/:id", middleware.Auth(), userAction.Remove)
 	}
 }

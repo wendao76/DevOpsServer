@@ -1,18 +1,34 @@
 info:
   contact: {}
   license: {}
-  title: 接口文档
-  version: 0.0.1
 paths:
   /users:
+    delete:
+      consumes:
+      - application/json
+      description: 根据用户ID删除用户
+      produces:
+      - application/json
+      summary: 删除用户
     get:
+      consumes:
+      - application/json
+      description: 根据用户ID获取用户信息
+      produces:
+      - application/json
+      summary: 获取用户信息
+    post:
       consumes:
       - application/json
       description: 新增一个用户
       produces:
       - application/json
       summary: 新增用户
+    put:
+      consumes:
+      - application/json
+      description: 修改用户信息
+      produces:
+      - application/json
+      summary: 修改用户
 swagger: "2.0"
-tags:
-- description: web框架描述
-  name: web框架名称

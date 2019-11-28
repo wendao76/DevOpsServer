@@ -3,12 +3,15 @@ package http
 import (
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
+	"github.com/go-redis/redis"
+	"go_web/internal/common/config"
 	"go_web/internal/oauth2/service"
 	"gopkg.in/oauth2.v3/generates"
 	"gopkg.in/oauth2.v3/manage"
 	"gopkg.in/oauth2.v3/models"
 	"gopkg.in/oauth2.v3/server"
 	"gopkg.in/oauth2.v3/store"
+	oredis "gopkg.in/go-oauth2/redis.v3"
 	"log"
 )
 
@@ -44,9 +47,14 @@ func initRouter(engine *gin.Engine) {
 
 //初始化oauth2处理流程
 func initOAuthServer() *server.Server {
+	conf := config.GetInstance()
+	redisConf := conf.Redis
 	manager := manage.NewDefaultManager()
 	// token store
-	manager.MustTokenStorage(store.NewMemoryTokenStore())
+	manager.MapTokenStorage(oredis.NewRedisStore(&redis.Options{
+		Addr: redisConf.Addr,
+		DB: redisConf.Db,
+	}))
 
 	// generate jwt access token
 	manager.MapAccessGenerate(generates.NewJWTAccessGenerate([]byte("00000000"), jwt.SigningMethodHS512))
