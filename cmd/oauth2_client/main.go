@@ -63,6 +63,7 @@ func main() {
 	})
 
 	http.HandleFunc("/refresh", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Println("globalToken:%s" , globalToken)
 		if globalToken == nil {
 			http.Redirect(w, r, "/", http.StatusFound)
 			return

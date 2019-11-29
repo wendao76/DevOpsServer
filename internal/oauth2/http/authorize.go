@@ -33,7 +33,7 @@ func (s *OAuthService) Authorize(ctx *gin.Context) {
 	r := ctx.Request
 	store, err := session.Start(nil, w, r)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		errors(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
 
@@ -41,6 +41,8 @@ func (s *OAuthService) Authorize(ctx *gin.Context) {
 	if v, ok := store.Get("ReturnUri"); ok {
 		form = v.(url.Values)
 	}
+	fmt.Println("Authorize")
+	fmt.Println(form)
 	r.Form = form
 
 	store.Delete("ReturnUri")

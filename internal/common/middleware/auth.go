@@ -2,7 +2,10 @@ package middleware
 
 import (
 	"fmt"
+	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
+	"gopkg.in/oauth2.v3/generates"
+	"log"
 )
 
 func Auth() gin.HandlerFunc{
@@ -22,8 +25,25 @@ func AuthByUsername(username string, password string, ctx *gin.Context) bool {
 }
 
 //根据token进行登录
-func AuthByToken(token string, ctx *gin.Context) bool {
-	fmt.Println("AuthByToken: token: " + token)
+func AuthByToken(access string, ctx *gin.Context) bool {
+	token, err := jwt.ParseWithClaims(access, &generates.JWTAccessClaims{}, func(t *jwt.Token) (interface{}, error) {
+		if _, ok := t.Method.(*jwt.SigningMethodHMAC); !ok {
+			return nil, fmt.Errorf("parse error")
+		}
+		return []byte("00000000"), nil
+	})
+	if err != nil {
+	    log.Fatal(err.Error())
+	}
+
+	claims, ok := token.Claims.(*generates.JWTAccessClaims)
+	if !ok || !token.Valid {
+		log.Fatal("invalid token")
+		return false
+	}
+	fmt.Println("jwt数据:")
+	fmt.Printf("token.Raw:%s, ExpiresAt:%d, Subject:%s, Audience:%srrrrrrrrrrrrrrrrrrrrrrrrrrrrrf4eedddddddddddddddd", token.Raw, claims.ExpiresAt, claims.Subject, claims.Audience)
+	ctx.Set("auth_user", token)
 	return true
 }
 

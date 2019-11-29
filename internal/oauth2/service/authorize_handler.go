@@ -9,8 +9,8 @@ import (
 //帐号密码校验器
 func PasswordAuthorizationHandler(username, password string) (userID string, err error) {
 	fmt.Println("密码校验")
-	if username == "test" && password == "test" {
-		userID = "test"
+	if username == "test2" && password == "test2" {
+		userID = "testUserID"
 	}
 	return
 }
