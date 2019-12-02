@@ -65,7 +65,7 @@ func (s *OAuthAction) LoginPage(ctx *gin.Context) {
 	r := ctx.Request
 	_, err := session.Start(nil, w, r)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		errors(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
 

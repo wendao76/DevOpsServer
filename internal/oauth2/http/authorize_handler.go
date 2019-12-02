@@ -46,3 +46,14 @@ func UserAuthorizeHandler(w http.ResponseWriter, r *http.Request) (userID string
 	store.Save()
 	return
 }
+
+//TODO 客户端帐号密码本地校验
+func ClientFormHandler(r *http.Request) (string, string, error) {
+	log.Println("ClientFormHandler")
+	clientID := r.Form.Get("client_id")
+	clientSecret := r.Form.Get("client_secret")
+	if clientID == "" || clientSecret == "" {
+		return "", "", nil
+	}
+	return clientID, clientSecret, nil
+}

@@ -42,7 +42,7 @@ func initRouter(engine *gin.Engine) {
 	engine.POST("/token", s.Token)
 	engine.GET("/authorize", s.Authorize)
 	engine.POST("/authorize", s.Authorize)
-	engine.POST("/client-register", s.RegisterClient)
+	engine.POST("/register-client", s.RegisterClient)
 }
 
 //初始化oauth2处理流程
@@ -69,7 +69,7 @@ func initOAuthServer() *server.Server {
 
 	srv := server.NewDefaultServer(manager)
 	srv.SetAllowGetAccessRequest(true)
-	srv.SetClientInfoHandler(server.ClientFormHandler)
+	srv.SetClientInfoHandler(ClientFormHandler)
 	srv.SetPasswordAuthorizationHandler(PasswordAuthorizationHandler)
 	srv.SetAuthorizeScopeHandler(AuthorizeScopeHandler)
 	srv.SetUserAuthorizationHandler(UserAuthorizeHandler)
