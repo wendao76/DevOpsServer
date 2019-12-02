@@ -10,3 +10,5 @@ database:
   password: "root"
   port: "3306"
   charset: "utf8mb4"
+app:
+  jwt-key: "00000000"

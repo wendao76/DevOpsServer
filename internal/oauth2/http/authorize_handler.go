@@ -1,14 +1,14 @@
-package service
+package http
 
 import (
-	"fmt"
+	"log"
 	"github.com/go-session/session"
 	"net/http"
 )
 
 //帐号密码校验器
 func PasswordAuthorizationHandler(username, password string) (userID string, err error) {
-	fmt.Println("密码校验")
+	log.Println("PasswordAuthorizationHandler")
 	if username == "test2" && password == "test2" {
 		userID = "testUserID"
 	}
@@ -17,17 +17,17 @@ func PasswordAuthorizationHandler(username, password string) (userID string, err
 
 //TODO 未实现
 func AuthorizeScopeHandler(w http.ResponseWriter, r *http.Request) (scope string, err error) {
-	fmt.Println("authorizeScopeHandler")
+	log.Println("AuthorizeScopeHandler")
 	return
 }
 
 func UserAuthorizeHandler(w http.ResponseWriter, r *http.Request) (userID string, err error) {
+	log.Println("UserAuthorizeHandler")
 	store, err := session.Start(nil, w, r)
 	if err != nil {
 		return
 	}
 	uid, ok := store.Get("LoggedInUserID")
-	fmt.Printf("userAuthorizeHandler:uid:%s" , uid)
 	if !ok {
 		if r.Form == nil {
 			r.ParseForm()

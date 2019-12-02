@@ -1,24 +1,25 @@
 package http
 
 import (
-	"encoding/json"
 	"fmt"
-	"log"
-	"time"
-
+	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 	"github.com/go-session/session"
+	"go_web/internal/oauth2/model"
+	"go_web/internal/oauth2/service"
 	"gopkg.in/oauth2.v3/server"
+	"log"
 	"net/http"
 	"net/url"
+	"time"
 )
 
-type OAuthService struct {
+type OAuthAction struct {
 	Srv *server.Server
 }
 
 //获取token
-func (s *OAuthService) Token(ctx *gin.Context) {
+func (s *OAuthAction) Token(ctx *gin.Context) {
 	w := ctx.Writer
 	r := ctx.Request
 	err := s.Srv.HandleTokenRequest(w, r)
@@ -28,7 +29,8 @@ func (s *OAuthService) Token(ctx *gin.Context) {
 }
 
 //获取授权
-func (s *OAuthService) Authorize(ctx *gin.Context) {
+func (s *OAuthAction) Authorize(ctx *gin.Context) {
+	log.Println("Authorize")
 	w := ctx.Writer
 	r := ctx.Request
 	store, err := session.Start(nil, w, r)
@@ -41,8 +43,6 @@ func (s *OAuthService) Authorize(ctx *gin.Context) {
 	if v, ok := store.Get("ReturnUri"); ok {
 		form = v.(url.Values)
 	}
-	fmt.Println("Authorize")
-	fmt.Println(form)
 	r.Form = form
 
 	store.Delete("ReturnUri")
@@ -55,31 +55,12 @@ func (s *OAuthService) Authorize(ctx *gin.Context) {
 }
 
 //TODO 客户端注册
-func (s *OAuthService) RegisterClient(ctx *gin.Context) {
-
+func (s *OAuthAction) RegisterClient(ctx *gin.Context) {
 }
 
-func (s *OAuthService) Test(ctx *gin.Context) {
-	w := ctx.Writer
-	r := ctx.Request
-	token, err := s.Srv.ValidationBearerToken(r)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
-		return
-	}
-
-	data := map[string]interface{}{
-		"expires_in": int64(token.GetAccessCreateAt().Add(token.GetAccessExpiresIn()).Sub(time.Now()).Seconds()),
-		"client_id":  token.GetClientID(),
-		"user_id":    token.GetUserID(),
-	}
-	e := json.NewEncoder(w)
-	e.SetIndent("", "  ")
-	e.Encode(data)
-}
 
 //跳转到登录页面
-func (s *OAuthService) LoginPage(ctx *gin.Context) {
+func (s *OAuthAction) LoginPage(ctx *gin.Context) {
 	w := ctx.Writer
 	r := ctx.Request
 	_, err := session.Start(nil, w, r)
@@ -91,8 +72,10 @@ func (s *OAuthService) LoginPage(ctx *gin.Context) {
 	html(ctx, 200, "login.html")
 }
 
-//TODO 登录操作
-func (s *OAuthService) Login(ctx *gin.Context) {
+//登录操作
+// TODO 帐号密码校验
+func (s *OAuthAction) Login(ctx *gin.Context) {
+	log.Println("POST.Login")
 	type LoginModel struct {
 		Username string `form:"username" json:"username" binding:"required"`
 		Password string `form:"password" json:"password" binding:"required"`
@@ -112,12 +95,11 @@ func (s *OAuthService) Login(ctx *gin.Context) {
 	}
 	store.Set("LoggedInUserID", loginData.Username)
 	store.Save()
-
 	ctx.Redirect(http.StatusFound, "/auth")
 }
 
 //授权页面
-func (s *OAuthService) AuthPage(ctx *gin.Context) {
+func (s *OAuthAction) AuthPage(ctx *gin.Context) {
 	w := ctx.Writer
 	r := ctx.Request
 	store, err := session.Start(nil, w, r)
@@ -133,3 +115,32 @@ func (s *OAuthService) AuthPage(ctx *gin.Context) {
 	}
 	html(ctx, http.StatusOK, "auth.html")
 }
+
+//自测
+func (s *OAuthAction) Test(ctx *gin.Context) {
+	oauthSrv := service.OauthService
+
+	standardClaims := jwt.StandardClaims{
+		ExpiresAt: time.Now().Add(5 * time.Minute).Unix(),
+	}
+	user := &model.OAuthUser {
+	    Username: "wendao",
+	}
+	user.Uid = 1000
+	log.Println("tokenStr")
+	token, err := oauthSrv.GenJWTAccessToken(user, standardClaims)
+	if err != nil {
+		fmt.Printf("GenJWTAccessToken error:" , err.Error())
+	}
+	log.Println(token)
+
+
+	claims, err2 := oauthSrv.ParseJWTAccessToken(token)
+	if err2 != nil {
+		log.Println("parse error:" + err2.Error())
+		//log.Fatal(err.Error())
+	}
+	log.Println("username:", claims.GetUsername())
+	result(ctx,nil, http.StatusOK)
+}
+

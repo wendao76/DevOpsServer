@@ -5,13 +5,12 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis"
 	"go_web/internal/common/config"
-	"go_web/internal/oauth2/service"
+	oredis "gopkg.in/go-oauth2/redis.v3"
 	"gopkg.in/oauth2.v3/generates"
 	"gopkg.in/oauth2.v3/manage"
 	"gopkg.in/oauth2.v3/models"
 	"gopkg.in/oauth2.v3/server"
 	"gopkg.in/oauth2.v3/store"
-	oredis "gopkg.in/go-oauth2/redis.v3"
 	"log"
 )
 
@@ -32,13 +31,14 @@ func New() {
 //路由初始化
 func initRouter(engine *gin.Engine) {
 	srv := initOAuthServer()
-	s := &OAuthService{
+	s := &OAuthAction{
 		Srv: srv,
 	}
 	engine.GET("/login", s.LoginPage)
 	engine.POST("/login", s.Login)
 	engine.GET("/auth", s.AuthPage)
 	engine.GET("/token", s.Token)
+	engine.GET("/test", s.Test)
 	engine.POST("/token", s.Token)
 	engine.GET("/authorize", s.Authorize)
 	engine.POST("/authorize", s.Authorize)
@@ -70,8 +70,8 @@ func initOAuthServer() *server.Server {
 	srv := server.NewDefaultServer(manager)
 	srv.SetAllowGetAccessRequest(true)
 	srv.SetClientInfoHandler(server.ClientFormHandler)
-	srv.SetPasswordAuthorizationHandler(service.PasswordAuthorizationHandler)
-	srv.SetAuthorizeScopeHandler(service.AuthorizeScopeHandler)
-	srv.SetUserAuthorizationHandler(service.UserAuthorizeHandler)
+	srv.SetPasswordAuthorizationHandler(PasswordAuthorizationHandler)
+	srv.SetAuthorizeScopeHandler(AuthorizeScopeHandler)
+	srv.SetUserAuthorizationHandler(UserAuthorizeHandler)
 	return srv
 }

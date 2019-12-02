@@ -60,6 +60,7 @@ func main() {
 		e := json.NewEncoder(w)
 		e.SetIndent("", "  ")
 		e.Encode(token)
+		log.Println("client.GET.oauth2")
 	})
 
 	http.HandleFunc("/refresh", func(w http.ResponseWriter, r *http.Request) {
