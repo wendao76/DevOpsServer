@@ -1,8 +1,8 @@
 package http
 
 import (
-	"log"
 	"github.com/go-session/session"
+	"log"
 	"net/http"
 )
 

@@ -12,30 +12,29 @@ var (
 	OauthService *oauthService
 )
 var (
-	gen *generates.JWTAccessGenerate
+	gen      *generates.JWTAccessGenerate
 	tokenKey = "00000000"
 )
+
 func init() {
 	OauthService = &oauthService{}
 	gen = generates.NewJWTAccessGenerate([]byte(tokenKey), jwt.SigningMethodHS512)
 }
 
-
 type oauthService struct {
-
 }
 
 //生成jwt access token
 func (s *oauthService) GenJWTAccessToken(data model.ClaimsLocal, sClaims jwt.StandardClaims) (string, error) {
-	claims := &model.JWTAccessClaimsLocal {
-		Username : data.GetUsername(),
-		Uid: data.GetUid(),
+	claims := &model.JWTAccessClaimsLocal{
+		Username:       data.GetUsername(),
+		Uid:            data.GetUid(),
 		StandardClaims: sClaims,
 	}
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	tokenStr, err := token.SignedString([]byte("00000000"))
 	if err != nil {
-	    return "", err
+		return "", err
 	}
 	return tokenStr, nil
 }
@@ -55,5 +54,3 @@ func (s *oauthService) ParseJWTAccessToken(accessToken string) (model.ClaimsLoca
 	claimsResult, _ := token.Claims.(*model.JWTAccessClaimsLocal)
 	return claimsResult, nil
 }
-
-

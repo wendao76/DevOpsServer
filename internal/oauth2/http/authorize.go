@@ -58,7 +58,6 @@ func (s *OAuthAction) Authorize(ctx *gin.Context) {
 func (s *OAuthAction) RegisterClient(ctx *gin.Context) {
 }
 
-
 //跳转到登录页面
 func (s *OAuthAction) LoginPage(ctx *gin.Context) {
 	w := ctx.Writer
@@ -123,17 +122,16 @@ func (s *OAuthAction) Test(ctx *gin.Context) {
 	standardClaims := jwt.StandardClaims{
 		ExpiresAt: time.Now().Add(5 * time.Minute).Unix(),
 	}
-	user := &model.OAuthUser {
-	    Username: "wendao",
+	user := &model.OAuthUser{
+		Username: "wendao",
 	}
 	user.Uid = 1000
 	log.Println("tokenStr")
 	token, err := oauthSrv.GenJWTAccessToken(user, standardClaims)
 	if err != nil {
-		fmt.Printf("GenJWTAccessToken error:" , err.Error())
+		fmt.Printf("GenJWTAccessToken error:", err.Error())
 	}
 	log.Println(token)
-
 
 	claims, err2 := oauthSrv.ParseJWTAccessToken(token)
 	if err2 != nil {
@@ -141,6 +139,5 @@ func (s *OAuthAction) Test(ctx *gin.Context) {
 		//log.Fatal(err.Error())
 	}
 	log.Println("username:", claims.GetUsername())
-	result(ctx,nil, http.StatusOK)
+	result(ctx, nil, http.StatusOK)
 }
-

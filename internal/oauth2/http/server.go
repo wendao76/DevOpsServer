@@ -53,7 +53,7 @@ func initOAuthServer() *server.Server {
 	// token store
 	manager.MapTokenStorage(oredis.NewRedisStore(&redis.Options{
 		Addr: redisConf.Addr,
-		DB: redisConf.Db,
+		DB:   redisConf.Db,
 	}))
 
 	// generate jwt access token
