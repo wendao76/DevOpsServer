@@ -29,7 +29,7 @@ func initRouter(engine *gin.Engine) {
 	{
 		userGroup.POST("", middleware.Auth(),  userAction.Create)
 		userGroup.PUT("", middleware.Auth(), userAction.Modify)
-		userGroup.GET("", userAction.List)
+		userGroup.GET("", middleware.Auth(), userAction.List)
 		userGroup.GET("/:id", middleware.Auth(), userAction.Get)
 		userGroup.DELETE("/:id", middleware.Auth(), userAction.Remove)
 	}

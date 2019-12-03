@@ -24,20 +24,20 @@ type dao struct {
 }
 
 func initDefault() error{
-	err := Init(config.GetInstance())
+	err := Init(config.Config.Db, config.Config.Redis)
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func Init(conf *config.Config)(err error) {
-	db, err := initDB(conf.Db)
+func Init(dbConf *config.DbConfig, redisConf *config.RedisConfig)(err error) {
+	db, err := initDB(dbConf)
 
 	if err != nil {
 		return err
 	}
-	redisClient, err := initRedis(conf.Redis)
+	redisClient, err := initRedis(redisConf)
 	if err != nil {
 		return err
 	}

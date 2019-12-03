@@ -47,8 +47,7 @@ func initRouter(engine *gin.Engine) {
 
 //初始化oauth2处理流程
 func initOAuthServer() *server.Server {
-	conf := config.GetInstance()
-	redisConf := conf.Redis
+	redisConf := config.Config.Redis
 	manager := manage.NewDefaultManager()
 	// token store
 	manager.MapTokenStorage(oredis.NewRedisStore(&redis.Options{

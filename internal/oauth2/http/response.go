@@ -21,7 +21,7 @@ type resp struct {
 	Data    interface{} `json:"data,omitempty"`
 }
 
-func error(c *gin.Context, code int, msg string) {
+func Error(c *gin.Context, code int, msg string) {
 	c.Set(contextErrCode, code)
 	c.JSON(200, resp{
 		Code:    code,
@@ -29,10 +29,14 @@ func error(c *gin.Context, code int, msg string) {
 	})
 }
 
-func result(c *gin.Context, data interface{}, code int) {
+func Result(c *gin.Context, data interface{}, code int) {
 	c.Set(contextErrCode, code)
 	c.JSON(200, resp{
 		Code: code,
 		Data: data,
 	})
+}
+
+func Html(c *gin.Context, code int, filename string) {
+	c.HTML(code, filename, nil)
 }

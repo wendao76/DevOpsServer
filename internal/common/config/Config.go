@@ -8,7 +8,7 @@ import (
 var (
 	confPath = "."
 	confFile = "config"
-	conf     *Config
+	Config     *config
 )
 
 func init() {
@@ -18,13 +18,8 @@ func init() {
 	}
 }
 
-
-func GetInstance()  *Config {
-	return conf
-}
-
 func initDefault() (err error) {
-	conf, err = Default()
+	Config, err = Default()
 	if err != nil {
 		panic(err)
 	}
@@ -34,14 +29,14 @@ func initDefault() (err error) {
 func Init(path string, name string)  (err error) {
 	confPath = path
 	confFile = name
-	conf, err = Default()
+	Config, err = Default()
 	if err != nil {
 		panic(err)
 	}
 	return
 }
 
-func Default() (conf *Config, err error) {
+func Default() (conf *config, err error) {
 	v := viper.New()
 	v.AddConfigPath(confPath)
 	v.SetConfigName(confFile)
@@ -61,14 +56,14 @@ func Default() (conf *Config, err error) {
 	if err != nil {
 	    return nil, err
 	}
-	conf = &Config{
+	conf = &config{
 		Db:    dbConfig,
 		Redis: redisConfig,
 	}
 	return
 }
 
-func New(configPath, configFile string) (conf *Config, err error) {
+func New(configPath, configFile string) (conf *config, err error) {
 	confPath, confFile = configPath, configFile
 	conf, err = Default()
 	if err != nil {
@@ -77,7 +72,7 @@ func New(configPath, configFile string) (conf *Config, err error) {
 	return
 }
 
-type Config struct {
+type config struct {
 	Db    *DbConfig
 	Redis *RedisConfig
 }

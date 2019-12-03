@@ -24,7 +24,7 @@ func (s *OAuthAction) Token(ctx *gin.Context) {
 	r := ctx.Request
 	err := s.Srv.HandleTokenRequest(w, r)
 	if err != nil {
-		errors(ctx, 500, "token获取失败")
+		Error(ctx, 500, "token获取失败")
 	}
 }
 
@@ -35,7 +35,7 @@ func (s *OAuthAction) Authorize(ctx *gin.Context) {
 	r := ctx.Request
 	store, err := session.Start(nil, w, r)
 	if err != nil {
-		errors(ctx, http.StatusInternalServerError, err.Error())
+		Error(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
 
@@ -50,7 +50,7 @@ func (s *OAuthAction) Authorize(ctx *gin.Context) {
 
 	err = s.Srv.HandleAuthorizeRequest(w, r)
 	if err != nil {
-		errors(ctx, http.StatusBadRequest, err.Error())
+		Error(ctx, http.StatusBadRequest, err.Error())
 	}
 }
 
@@ -64,11 +64,11 @@ func (s *OAuthAction) LoginPage(ctx *gin.Context) {
 	r := ctx.Request
 	_, err := session.Start(nil, w, r)
 	if err != nil {
-		errors(ctx, http.StatusInternalServerError, err.Error())
+		Error(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
 
-	html(ctx, 200, "login.html")
+	Html(ctx, 200, "login.html")
 }
 
 //登录操作
@@ -104,7 +104,7 @@ func (s *OAuthAction) AuthPage(ctx *gin.Context) {
 	store, err := session.Start(nil, w, r)
 	fmt.Println(store)
 	if err != nil {
-		errors(ctx, 500, err.Error())
+		Error(ctx, 500, err.Error())
 	}
 
 	if _, ok := store.Get("LoggedInUserID"); !ok {
@@ -112,7 +112,7 @@ func (s *OAuthAction) AuthPage(ctx *gin.Context) {
 		w.WriteHeader(http.StatusFound)
 		return
 	}
-	html(ctx, http.StatusOK, "auth.html")
+	Html(ctx, http.StatusOK, "auth.html")
 }
 
 //自测
@@ -139,5 +139,5 @@ func (s *OAuthAction) Test(ctx *gin.Context) {
 		//log.Fatal(err.Error())
 	}
 	log.Println("username:", claims.GetUsername())
-	result(ctx, nil, http.StatusOK)
+	Result(ctx, nil, http.StatusOK)
 }

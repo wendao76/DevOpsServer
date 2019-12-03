@@ -37,10 +37,10 @@ func (ua * UserAction) Get(ctx *gin.Context) {
 
 	db.First(&userModel, userID)
 	if userModel.ID == 0 {
-		error(ctx, http.StatusBadRequest, "指定用户不存在")
+		Error(ctx, http.StatusBadRequest, "指定用户不存在")
 		return
 	}
-	result(ctx, userModel, http.StatusOK)
+	Result(ctx, userModel, http.StatusOK)
 }
 
 //@Summary 新增用户
@@ -52,17 +52,17 @@ func (ua * UserAction) Create(ctx *gin.Context) {
 	var userForm UserForm
 	err := ctx.Bind(&userForm)
 	if err != nil {
-	    error(ctx, http.StatusBadRequest, err.Error())
+	    Error(ctx, http.StatusBadRequest, err.Error())
 	    return
 	}
 	var user model.User
 	util.CopyStruct(&user, &userForm)
 	db := dao.Dao.Db.Create(&user)
 	if db.Error != nil {
-	    error(ctx, http.StatusServiceUnavailable, db.Error.Error())
+	    Error(ctx, http.StatusServiceUnavailable, db.Error.Error())
 	    return
 	}
-	result(ctx, nil, OK)
+	Result(ctx, nil, OK)
 }
 
 //@Summary 修改用户
@@ -74,7 +74,7 @@ func (ua *UserAction) Modify(ctx *gin.Context) {
 	var userForm UserForm
 	err := ctx.Bind(&userForm)
 	if err != nil {
-		error(ctx, http.StatusBadRequest, err.Error())
+		Error(ctx, http.StatusBadRequest, err.Error())
 		return
 	}
 	var user model.User
@@ -84,10 +84,10 @@ func (ua *UserAction) Modify(ctx *gin.Context) {
 	util.CopyStruct(&user, &userForm)
 	db = db.Save(user)
 	if db.Error != nil {
-		error(ctx, http.StatusServiceUnavailable, db.Error.Error())
+		Error(ctx, http.StatusServiceUnavailable, db.Error.Error())
 		return
 	}
-	result(ctx, nil, OK)
+	Result(ctx, nil, OK)
 }
 
 //@Summary 删除用户
@@ -101,7 +101,7 @@ func (ua * UserAction) Remove(ctx *gin.Context) {
 	daoIns := dao.Dao
 	daoIns.Db.First(&userObj, userID)
 	daoIns.Db.Delete(&userObj)
-	result(ctx, nil, http.StatusOK)
+	Result(ctx, nil, http.StatusOK)
 }
 
 func (ua * UserAction) List(c *gin.Context) {
