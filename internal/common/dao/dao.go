@@ -9,7 +9,7 @@ import (
 	"log"
 )
 
-var dao *Dao
+var Dao *dao
 
 func init() {
 	err := initDefault()
@@ -18,13 +18,9 @@ func init() {
 	}
 }
 
-type Dao struct {
+type dao struct {
 	Db *gorm.DB
 	Redis *redis.Client
-}
-
-func Get() *Dao {
-	return dao
 }
 
 func initDefault() error{
@@ -45,7 +41,7 @@ func Init(conf *config.Config)(err error) {
 	if err != nil {
 		return err
 	}
-	dao = &Dao{
+	Dao = &dao{
 		Db: db,
 		Redis: redisClient,
 	}
