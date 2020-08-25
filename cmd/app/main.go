@@ -2,7 +2,6 @@ package main
 
 import (
 	"flag"
-	"go_web/internal/user/http"
 	)
 
 //@title OAuth2服务文档
@@ -12,6 +11,5 @@ import (
 func main() {
 	//TODO 代码待完善
 	flag.Parse()
-	http.New()
 }
 

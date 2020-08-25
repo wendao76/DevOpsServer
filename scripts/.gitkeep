@@ -1,0 +1,1 @@
+存放 build、install、analysis 等操作脚本。这些脚本使得项目根目录的 Makefile 很简洁。
