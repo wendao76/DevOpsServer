@@ -1,15 +1,16 @@
 package main
 
 import (
-	"flag"
-	)
+	"github.com/gin-gonic/gin"
+)
 
-//@title OAuth2服务文档
-//@version 0.0.1
-//@tag.name OAuth2服务
-//@tag.description OAuth2服务
 func main() {
-	//TODO 代码待完善
-	flag.Parse()
+	r := gin.Default()
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "pong",
+		})
+	})
+	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
 
