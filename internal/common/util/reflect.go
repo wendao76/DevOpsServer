@@ -2,6 +2,7 @@ package util
 
 import "reflect"
 
+//深度拷贝
 func DeepCopyFields(infType reflect.Type) []reflect.StructField {
 	var fields []reflect.StructField
 
@@ -17,6 +18,7 @@ func DeepCopyFields(infType reflect.Type) []reflect.StructField {
 	return fields
 }
 
+//浅拷贝
 func CopyStruct(dstPtr interface{}, srcPtr interface{}) {
 	srcv := reflect.ValueOf(srcPtr)
 	dstv := reflect.ValueOf(dstPtr)

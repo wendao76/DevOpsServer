@@ -48,7 +48,7 @@ func AuthByToken(access string, ctx *gin.Context) bool {
 	return true
 }
 
-func AuthByTtokenOld(access string, ctx *gin.Context) bool{
+func AuthByTokenOld(access string, ctx *gin.Context) bool{
 	token, err := jwt.ParseWithClaims(access, &generates.JWTAccessClaims{}, func(t *jwt.Token) (interface{}, error) {
 		if _, ok := t.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("parse error")

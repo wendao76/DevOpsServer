@@ -1,14 +1,12 @@
 redis:
-  addr: "192.168.137.5:6379"
-  db: 0
-  password: ""
+  addr: "192.168.192.130:6379"
+  db: 1
+  password: "123456"
 database:
   type: "mysql"
-  host: "192.168.137.5"
+  host: "192.168.192.130"
   dbname: "testdb"
   username: "root"
   password: "root"
   port: "3306"
   charset: "utf8mb4"
-app:
-  jwt-key: "00000000"

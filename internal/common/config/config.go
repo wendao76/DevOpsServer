@@ -6,7 +6,7 @@ import (
 )
 
 var (
-	confPath = "."
+	confPath = "configs"
 	confFile = "config"
 	Config     *config
 )
