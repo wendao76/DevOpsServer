@@ -10,7 +10,6 @@ import (
 )
 
 var Dao *dao
-
 func init() {
 	err := initDefault()
 	if err != nil {
@@ -31,6 +30,7 @@ func initDefault() error{
 	return nil
 }
 
+//初始化操作
 func Init(dbConf *config.DbConfig, redisConf *config.RedisConfig)(err error) {
 	db, err := initDB(dbConf)
 
@@ -49,6 +49,7 @@ func Init(dbConf *config.DbConfig, redisConf *config.RedisConfig)(err error) {
 	return nil
 }
 
+//初始化数据库相关内容
 func initDB(dbConfig *config.DbConfig) (db *gorm.DB, err error){
 	db, err = gorm.Open(dbConfig.Type, getDsn(dbConfig))
 	if err != nil {
@@ -58,6 +59,8 @@ func initDB(dbConfig *config.DbConfig) (db *gorm.DB, err error){
 	db.DB().SetMaxIdleConns(20)
 	db.DB().SetConnMaxLifetime(600)
 	db.DB().SetMaxOpenConns(1000)
+
+	AutoMigrateTables(db)
 	return
 }
 
@@ -84,4 +87,11 @@ func getDsn(c *config.DbConfig) string {
 		return fmt.Sprintf("host=%s port=%d user=%s dbname=%s password=%s", c.Host, c.Port, c.Username, c.DbName, c.Password)
 	}
 	return ""
+}
+
+//自动创建表
+func AutoMigrateTables(db *gorm.DB) {
+	fmt.Println("数据表融合")
+	//数据结构初始化
+	//db.AutoMigrate(po.RunLog{}, po.RunErrorLog{})
 }
